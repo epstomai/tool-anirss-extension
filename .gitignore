@@ -4,6 +4,7 @@ Thumbs.db
 .idea/
 .vscode/
 *.local
+# 本地截图源文件；入库请放 docs/
 Snipaste_*.png
 .antigravity/
 .codegraph/

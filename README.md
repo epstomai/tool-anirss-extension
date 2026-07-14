@@ -10,8 +10,8 @@
 
 ## 功能
 
-- 在番剧详情页（`/Home/Bangumi/{id}`）每个**字幕组**旁注入 **Ani-RSS** 按钮
-- 标题旁可订阅「整部番」RSS（不限字幕组）
+- 在番剧详情页 / 首页展开后，每个**字幕组**旁注入 **Ani** 按钮
+- 必须选择字幕组订阅（不提供整部一键订阅）
 - 调用 Ani-RSS 官方接口：`POST /api/rssToAni` → `POST /api/addAni`
 - 支持登录鉴权（密码自动 MD5）、API Key、IP 白名单/免登录
 - 可选：把镜像站 RSS 主机改写为 Ani-RSS 服务器可访问的域名
@@ -38,15 +38,21 @@
 **番剧详情页**
 
 1. 打开例如：`https://mikanani.me/Home/Bangumi/xxxx`
-2. 在目标**字幕组**右侧点击 **Ani-RSS**（必须选字幕组，无整部订阅按钮）
+2. 在目标**字幕组**右侧点击 **Ani**（必须选字幕组，无整部订阅按钮）
 
 **首页**
 
 1. 打开 `https://mikanani.me/`
 2. **点击番剧封面展开**字幕组列表
-3. 每一行：`字幕组名 …… [Ani-RSS] [订]`，点 **Ani-RSS** 即可
+3. 每一行：`字幕组名 …… [Ani] [订]`，点 **Ani** 即可
 
 成功后右上角 toast 持续到完成；到 Ani-RSS 后台即可看到新订阅。
+
+### 界面预览
+
+字幕组旁的 **Ani** 按钮（与蜜柑原生「订」并排）：
+
+![Ani 订阅按钮示意](docs/screenshot-ani-button.png)
 
 ## 更新说明（重要）
 
@@ -92,6 +98,8 @@ tool-anirss-extension/
 │   ├── popup.js
 │   └── popup.css
 ├── icons/
+├── docs/
+│   └── screenshot-ani-button.png
 └── README.md
 ```
 
