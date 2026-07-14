@@ -1,0 +1,9 @@
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+*.local
+Snipaste_*.png
+.antigravity/
+.codegraph/

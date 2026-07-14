@@ -1,0 +1,237 @@
+/* 扩展上下文失效提示条 */
+.anirss-context-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2147483647;
+  display: none;
+  padding: 10px 16px;
+  background: #b42318;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+.anirss-context-banner.show {
+  display: block;
+}
+
+.anirss-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-left: 6px !important;
+  padding: 1px 8px !important;
+  min-width: 0 !important;
+  border-radius: 10px !important;
+  border: 1px solid #3bc0c3 !important;
+  background: #3bc0c3 !important;
+  color: #fff !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+  transition: background 0.15s ease, opacity 0.15s ease;
+  user-select: none;
+  box-sizing: border-box !important;
+}
+
+.anirss-btn:hover {
+  background: #2aa8ab !important;
+  border-color: #2aa8ab !important;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.anirss-btn:active {
+  opacity: 0.85;
+}
+
+.anirss-btn.is-loading {
+  opacity: 0.7;
+  pointer-events: none;
+  cursor: wait !important;
+}
+
+.anirss-btn.is-done {
+  background: #67c23a !important;
+  border-color: #67c23a !important;
+}
+
+.anirss-btn.is-error {
+  background: #f56c6c !important;
+  border-color: #f56c6c !important;
+}
+
+/* ---- Toast ---- */
+.anirss-toast-host {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 2147483646;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.anirss-toast {
+  min-width: 260px;
+  max-width: 420px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgba(32, 33, 36, 0.94);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  border-left: 4px solid #3bc0c3;
+  word-break: break-word;
+}
+
+.anirss-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.anirss-toast.success {
+  border-left-color: #67c23a;
+}
+
+.anirss-toast.error {
+  border-left-color: #f56c6c;
+}
+
+.anirss-toast.info,
+.anirss-toast.loading {
+  border-left-color: #3bc0c3;
+}
+
+.anirss-toast-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.anirss-toast-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.anirss-toast-spinner {
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #3bc0c3;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: anirss-spin 0.7s linear infinite;
+  display: none;
+}
+
+.anirss-toast.loading .anirss-toast-spinner {
+  display: inline-block;
+}
+
+@keyframes anirss-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---- 详情页：字幕组行，Ani-RSS 与原生「订阅」并排靠右 ---- */
+.subgroup-text .anirss-btn-detail-sub,
+.subgroup-text .anirss-btn.pull-right {
+  float: right !important;
+  margin: 0 0 0 8px !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- 首页展开字幕组：一行对齐 [名称] [新] …… [Ani-RSS] [订] ---- */
+li.js-expand_bangumi-subgroup.anirss-home-sub-row,
+li.js-expand_bangumi-subgroup:has(.anirss-btn-home-sub) {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 6px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  /* 避免蜜柑原 float 把按钮挤到下一行 */
+  clear: both;
+}
+
+li.js-expand_bangumi-subgroup.anirss-home-sub-row > .tag-res-name,
+li.js-expand_bangumi-subgroup:has(.anirss-btn-home-sub) > .tag-res-name {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+li.js-expand_bangumi-subgroup.anirss-home-sub-row > .tag-res-new,
+li.js-expand_bangumi-subgroup:has(.anirss-btn-home-sub) > .tag-res-new {
+  flex: 0 0 auto !important;
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+/* Ani-RSS 贴在「订」左侧 */
+li.js-expand_bangumi-subgroup .anirss-btn-home-sub {
+  flex: 0 0 auto !important;
+  order: 40 !important;
+  float: none !important;
+  position: static !important;
+  margin: 0 !important;
+  padding: 0 7px !important;
+  height: 22px !important;
+  line-height: 20px !important;
+  font-size: 11px !important;
+  border-radius: 11px !important;
+  display: inline-flex !important;
+  min-width: 28px !important;
+}
+
+/* 原生「订」按钮 */
+li.js-expand_bangumi-subgroup.anirss-home-sub-row > .tag-sub,
+li.js-expand_bangumi-subgroup:has(.anirss-btn-home-sub) > .tag-sub {
+  flex: 0 0 auto !important;
+  order: 50 !important;
+  float: none !important;
+  margin: 0 !important;
+  width: auto !important;
+}
+
+/* popover 不参与 flex 排版，避免撑乱行 */
+li.js-expand_bangumi-subgroup.anirss-home-sub-row > .popover,
+li.js-expand_bangumi-subgroup:has(.anirss-btn-home-sub) > .popover,
+li.js-expand_bangumi-subgroup.anirss-home-sub-row > .js-subscribe_bangumi_popover,
+li.js-expand_bangumi-subgroup:has(.anirss-btn-home-sub) > .js-subscribe_bangumi_popover {
+  order: 99 !important;
+  position: absolute !important;
+  /* 保持蜜柑自身定位，不占 flex 宽 */
+}
+
+/* 旧版整部 A 按钮一律隐藏（防止缓存/残留） */
+.anirss-btn-compact,
+.anirss-btn-title {
+  display: none !important;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ani-RSS 订阅助手</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <img src="../icons/icon48.png" width="28" height="28" alt="" />
+    <div>
+      <h1>Ani-RSS 订阅助手</h1>
+      <p class="sub">蜜柑页面一键添加订阅</p>
+    </div>
+  </header>
+
+  <form id="form">
+    <label>
+      Ani-RSS 地址
+      <input id="baseUrl" type="url" required placeholder="http://192.168.233.7:17789" />
+    </label>
+
+    <div class="row">
+      <label>
+        用户名
+        <input id="username" type="text" autocomplete="username" placeholder="admin" />
+      </label>
+      <label>
+        密码
+        <input id="password" type="password" autocomplete="current-password" placeholder="留空=IP白名单/免登" />
+      </label>
+    </div>
+
+    <label>
+      API Key <span class="hint">（可选，Ani-RSS 设置里配置）</span>
+      <input id="apiKey" type="text" placeholder="可选" />
+    </label>
+
+    <label>
+      RSS 主机替换 <span class="hint">（可选，把镜像域名换成 Ani-RSS 能访问的）</span>
+      <input id="rewriteRssHost" type="text" placeholder="例如 mikanani.me 或 https://mikanani.me" />
+    </label>
+
+    <div class="checks">
+      <label class="check">
+        <input id="enable" type="checkbox" checked />
+        添加后启用订阅
+      </label>
+      <label class="check">
+        <input id="downloadNew" type="checkbox" />
+        只下载最新集
+      </label>
+      <label class="check">
+        <input id="notify" type="checkbox" checked />
+        系统通知
+      </label>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="testBtn" class="secondary">测试连接</button>
+      <button type="submit" id="saveBtn">保存</button>
+    </div>
+  </form>
+
+  <div id="status" class="status" hidden></div>
+
+  <footer>
+    <p>支持 <strong>mikanani.me</strong>（官方）及镜像站。详情页 / 首页展开字幕组后点 <em>Ani-RSS</em> 即可订阅。</p>
+    <p class="tiny">流程：解析 RSS → Ani-RSS <code>rssToAni</code> → <code>addAni</code></p>
+  </footer>
+
+  <script src="../lib/shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
